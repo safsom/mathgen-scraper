@@ -15,10 +15,8 @@ This is a Django-based web application that builds and displays the academic anc
 - Python 3.7+
 - pip
 - Internet connection (the tool scrapes live data from https://genealogy.math.ndsu.nodak.edu)
+- django, requests, beautifulsoup4, certifi
 
 ## Setup
 
-You can run the following script to set up the environment:
-
-```bash
-./setup.sh
+Simply run the manage.py file in the mathgen_project directory.
