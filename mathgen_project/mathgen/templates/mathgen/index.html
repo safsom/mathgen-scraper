@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Genealogy Tree</title>
+    <script>
+    async function fetchTree() {
+        const id = document.getElementById("mathgen_id").value;
+        const depth = document.getElementById("depth").value;
+        const response = await fetch(`/get_tree/?id=${id}&depth=${depth}`);
+        const data = await response.json();
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    }
+    </script>
+</head>
+<body>
+    <h1>Math Genealogy Tree Viewer</h1>
+    <input type="text" id="mathgen_id" placeholder="Enter MathGen ID" />
+    <input type="number" id="depth" placeholder="Depth" />
+    <button onclick="fetchTree()">Generate</button>
+    <pre id="output"></pre>
+</body>
+</html>

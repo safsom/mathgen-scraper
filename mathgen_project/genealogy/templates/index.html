@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Genealogy Tree</title>
+    <script>
+        function fetchTree() {
+            const id = document.getElementById("id").value;
+            const depth = document.getElementById("depth").value;
+            const result = document.getElementById("result");
+            result.innerText = "Loading...";
+
+            fetch(`/get_tree/?id=${id}&depth=${depth}`)
+                .then(response => response.json())
+                .then(data => {
+                    function formatTree(tree, indent = 0) {
+                        let res = "";
+                        for (let key in tree) {
+                            res += " ".repeat(indent * 2) + "- " + key + "\n";
+                            res += formatTree(tree[key], indent + 1);
+                        }
+                        return res;
+                    }
+                    result.innerText = formatTree(data.tree);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Math Genealogy Tree Viewer</h1>
+    <label>MathGenealogy ID: <input type="text" id="id" /></label>
+    <label>Depth: <input type="number" id="depth" value="3" /></label>
+    <button onclick="fetchTree()">Generate Tree</button>
+    <pre id="result"></pre>
+</body>
+</html>
