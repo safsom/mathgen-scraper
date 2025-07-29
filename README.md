@@ -19,4 +19,4 @@ This is a Django-based web application that builds and displays the academic anc
 
 ## Setup
 
-Simply run the manage.py file in the mathgen_project directory.
+Simply run the manage.py file in the mathgen_project directory with parameter "runserver".
